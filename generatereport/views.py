@@ -2,19 +2,28 @@ from django.shortcuts import render
 from incidentdown.models import IncidentDown
 from django.http import HttpResponse
 import csv
-from datetime import datetime
+from datetime import datetime, timedelta
+
 
 # Create your views here.
 def index(request):
     return render(request, 'generatereport/index.html')
 
 #Generate CSV
-def generate_csv(request):
-    # Query all records from YourModel
-    queryset = IncidentDown.objects.all()
 
-     # Get the current date
+
+def generate_csv(request):
+    startDate = request.GET['startDate']
+    start = datetime.strptime(startDate, "%Y-%m-%d") 
+
+    endDate = request.GET['endDate']
+    end = datetime.strptime(endDate, "%Y-%m-%d") + timedelta(days=1)
+
+    # Get the current date
     current_date = datetime.now().strftime('%Y%m%d')
+    
+    # Query all records from YourModel
+    queryset = IncidentDown.objects.filter(date__range=[start, end])
 
     # Specify the file path
     csv_file_path = 'websnow.csv'
