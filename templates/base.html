@@ -27,44 +27,20 @@
         <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
         <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
         <script src="{% static 'js/lightbox.min.js' %}"></script>
-                <script src="{% static 'js/main.js' %}"></script>
-        <script>
-            $(document).ready(function () {
-                $("#submitBtn").on("click", function () {
-                    var name = $("#name").val();
-                    var email = $("#email").val();
-                    var description = $("#description").val();
-                    var impact = $("#type").val();
-                    var urgency = $("#urgency").val();
-                    var worknotes = $("#worknotes").val();
-                    var assignmentGroup = $("#assignment_group").val();
-                    var state = $("#state").val();
-
-                    if (!name || !email || !description || !worknotes) {
-                        alert("Please fill in all required fields.");
-                        return;
-                    }
-
-                    // Show loading circle
-                    $("#loadingCircle").show();
-
-                    // Disable the submit button
-                    $(this).prop("disabled", true);
-
-                    // Set a timeout to hide the loading circle after 5 seconds
-                    setTimeout(function () {
-                        // Enable the submit button
-                        $("#submitBtn").prop("disabled", false);
-
-                        // Hide the loading circle
-                        $("#loadingCircle").hide();
-                    }, 5000);
-                });
-            });
-        </script>
+        <script src="{% static 'js/main.js' %}"></script>
         <script>
             feather.replace()
         </script>
+        <script>
+            setTimeout(() => { alert('Howdy!'); }, 2000);
+        </script>
+
+        <script>
+            setTimeout(function(){
+                $('#message').fadeOut('slow');
+            },3000);
+        </script>
+  
         <!-- <script type="text/javascript">
             $('#myModal').on('shown.bs.modal', function () {
                 $('#myInput').trigger('focus')
@@ -73,7 +49,7 @@
         <!-- Modal -->
         <!-- Trigger the modal with a button -->
         
-     
+        
     </body>
 </html>
 

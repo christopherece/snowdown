@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from incidentdown.models import IncidentDown
 from django.http import HttpResponse
 import csv
@@ -30,5 +31,6 @@ def submitincident(request):
     )
 
     myincident.save()
-    return render(request, 'incidentdown/index.html')
+    messages.success(request, 'Your incident has been submitted')
+    return redirect('index')
 
