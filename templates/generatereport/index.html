@@ -55,38 +55,37 @@
                     <table class="table">
                       <thead class="thead-dark">
                         <tr>
-                          <th>Queue #</th>
                           <th>Name</th>
+                          <th>Email</th>
                           <th>Description</th>
-                          <th>RITM</th>
-                          <th>Type</th>
-                          <th>Comment</th>
-                          <th>Technician</th>
-                          <th>Status</th>
+                          <th>Impact</th>
+                          <th>Urgency</th>
+                          <th>Worknotes</th>
+                          <th>State</th>
+                          <th>Assignment Group</th>
                           <th>Action</th>
                           <th></th>
                         </tr>
                       </thead>
                       <tbody>
-                        {% for queueList in queueLists %}
+                        {% for inc in incidents %}
         
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-        
+                          <td>{{inc.name}}</td>
+                          <td>{{inc.email}}</td>
+                          <td>{{inc.description}}</td>
+                          <td>{{inc.impact}}</td>
+                          <td>{{inc.urgency}}</td>
+                          <td>{{inc.worknotes}}</td>
+                          <td>{{inc.state}}</td>
+                          <td>{{inc.assignment_group}}</td>
                           <td>
                             <!-- <a class="btn btn-secondary" style="text-decoration: none; color: black;" href="#"  data-toggle="modal" data-target="#update_modal"
                                 id="updateTicket" 
                             > -->
         
                             <a href="#" class="btn btn-secondary">
-                              <i class="fas fa-angle-double-right"></i> Get Ticket
+                              <i class="fas fa-angle-double-right"></i> Update Ticket
                             </a>
                           </td>
                         </tr>
@@ -103,15 +102,7 @@
 
         
 
-        <div class="flex justify-center mt-4 sm:mt-8">
-            <div class="text-center text-sm text-gray-500">
-                <i data-feather="phone"></i> Service Desk: 093-55-55-55
-            </div>
-
-            <div class="text-center text-sm text-gray-500 ml-4">
-                Copyright &copy; AucklandCouncil 2024 | <a href="#">LogIn</a> | <a href="#">Register</a>
-            </div>
-        </div>
+        {% include '_partials/footer.html' %}
     </div>
 </div>
 

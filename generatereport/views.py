@@ -7,10 +7,11 @@ from datetime import datetime, timedelta
 
 # Create your views here.
 def index(request):
-    return render(request, 'generatereport/index.html')
-
-#Generate CSV
-
+    incidents = IncidentDown.objects.all()
+    context = {
+        'incidents': incidents
+        }
+    return render(request, 'generatereport/index.html', context)
 
 def generate_csv(request):
     startDate = request.GET['startDate']
