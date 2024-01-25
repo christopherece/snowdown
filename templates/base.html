@@ -1,0 +1,79 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light only">
+
+        <title>When ServiceNow is Down</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/all.css'%}">       
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+        <!-- Styles -->
+        <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+    </head>
+    <body>
+        {% block content %}
+
+        {% endblock %}
+
+
+        <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/lightbox.min.js' %}"></script>
+                <script src="{% static 'js/main.js' %}"></script>
+        <script>
+            $(document).ready(function () {
+                $("#submitBtn").on("click", function () {
+                    var name = $("#name").val();
+                    var email = $("#email").val();
+                    var description = $("#description").val();
+                    var impact = $("#type").val();
+                    var urgency = $("#urgency").val();
+                    var worknotes = $("#worknotes").val();
+                    var assignmentGroup = $("#assignment_group").val();
+                    var state = $("#state").val();
+
+                    if (!name || !email || !description || !worknotes) {
+                        alert("Please fill in all required fields.");
+                        return;
+                    }
+
+                    // Show loading circle
+                    $("#loadingCircle").show();
+
+                    // Disable the submit button
+                    $(this).prop("disabled", true);
+
+                    // Set a timeout to hide the loading circle after 5 seconds
+                    setTimeout(function () {
+                        // Enable the submit button
+                        $("#submitBtn").prop("disabled", false);
+
+                        // Hide the loading circle
+                        $("#loadingCircle").hide();
+                    }, 5000);
+                });
+            });
+        </script>
+        <script>
+            feather.replace()
+        </script>
+        <!-- <script type="text/javascript">
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+                })
+        </script> -->
+        <!-- Modal -->
+        <!-- Trigger the modal with a button -->
+        
+     
+    </body>
+</html>
+

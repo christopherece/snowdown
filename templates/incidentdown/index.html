@@ -1,0 +1,181 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- <style>
+    @keyframes pulse {
+        0% {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+</style> -->
+
+    
+
+<div class="flex items-center justify-center min-h-screen py-4 sm:py-0">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <img src="{% static 'img/aklclogo.png' %}" alt="" width="220px">
+            <h1>Welcome to <strong>Dockinn</strong></h1>
+            <h3>Demo - If Service Now is Down!!!!</h3>
+        </div>
+        <p></p>
+        <p></p>
+
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <form name="incidentSnowDown" action="{% url 'submitincident' %}" method="POST">
+                    {% csrf_token %}
+                    <!-- Loading circle -->
+                    <div id="loadingCircle" style="display: none; text-align: center; margin-top: 10px; color: green; font-size: 20px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); position: relative;">
+                        Submitting Incident, Please Wait...
+                        <div class="spinner-border border-success" role="status" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: pulse 1s infinite;">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Name: </label>
+                        <input type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp"
+                            placeholder="Enter Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email: </label>
+                        <input type="text" name="email" class="form-control" id="email" aria-describedby="emailaddressHelp"
+                            placeholder="Enter Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" name="description" id="description" placeholder="Description"
+                            required>
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Impact: </label>
+                        <select class="form-control" name="impact" id="type" required>
+                            <option value="1 - 4 Users">1 - 4 Users</option>
+                            <option value="Multiple Users (5+)">Multiple Users (5+)</option>
+                            <option value="Entire Department / Site">Entire Department / Site</option>
+                            <option value="Entire Organization">Entire Organization</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Urgency: </label>
+                        <select class="form-control" name="urgency" id="urgency" required>
+                            <option value="Impeding normal work">Impeding normal work</option>
+                            <option value="Preventing non-urgent work">Preventing non-urgent work</option>
+                            <option value="Preventing urgent work">Preventing urgent work</option>
+                            <option value="Blocking critical business">Blocking critical business</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="worknotes">Work Notes</label>
+                        <textarea class="form-control" name="worknotes" id="worknotes" placeholder="Worknotes" required>
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Assignment Group: </label>
+                        <select class="form-control" name="assignment_group" id="assignment_group" required>
+                            <option value="Business Systems Saas Practice">Business Systems Saas Practice</option>
+                            <option value="Business Systems Intelligent Automation">Business Systems Intelligent Automation</option>
+                            <option value="Business Systems Library">Business Systems Library</option>
+                            <option value="Business Systems Registration Approval">Business Systems Registration Approval</option>
+                            <option value="Business Systems Development">Business Systems Development</option>
+                            <option value="CISCO">CISCO</option>
+                            <option value="Forensics">Forensics</option>
+                            <option value="ICT Bussiness Partners">ICT Bussiness Partners</option>
+                            <option value="ICT Admin Team">ICT Admin Team</option>
+                            <option value="Info Apps EDRMS">Info Apps EDRMS</option>
+                            <option value="Info Apps Geospatial">Info Apps Geospatial</option>
+                            <option value="Info Apps Geospatial Product Development">Info Apps Geospatial Product Development</option>
+                            <option value="Info Apps Geospatial Platform & Support">Info Apps Geospatial Platform & Support</option>
+                            <option value="Info Apps Geospatial Solutions & Services">Info Apps Geospatial Solutions & Services</option>
+                            <option value="Info Apps Web Solutions">Info Apps Web Solutions</option>
+                            <option value="ICT SD Delivery">ICT SD Delivery</option>
+                            <option value="myAuckland Files">myAuckland Files</option>
+                            <option value="Ops Applications">Ops Applications</option>
+                            <option value="Ops Automation">Ops Automation</option>
+                            <option value="Ops Capacity Management">Ops Capacity Management</option>
+                            <option value="Ops Core Software BI">Ops Core Software BI</option>
+                            <option value="Ops Core Software EDRMS">Ops Core Software EDRMS</option>
+                            <option value="Ops Core Software GIS">Ops Core Software GIS</option>
+                            <option value="Ops Core Software Integration">Ops Core Software Integration</option>
+                            <option value=">Ops Core Software Web Solutions">Ops Core Software Web Solutions</option>
+                            <option value="Ops Core Software SAP">Ops Core Software SAP</option>
+                            <option value="Ops Data Platforms">Ops Data Platforms</option>
+                            <option value="Ops Networks">Ops Networks</option>
+                            <option value="Ops Platforms">Ops Platforms</option>
+                            <option value="Ops Platforms - ServiceNow">Ops Platforms - ServiceNow</option>
+                            <option value="Ops Security">Ops Security</option>
+                            <option value="Ops Software Asset Management">Ops Software Asset Management</option>
+                            <option value="Ops Consenting & Property Information">Ops Consenting & Property Information</option>
+                            <option value="SAP CRM">SAP CRM</option>
+                            <option value="Sap Development">Sap Development</option>
+                            <option value="SAP Logistics and HR">SAP Logistics and HR</option>
+                            <option value="SAP Rates, Property & Financ">SAP Rates, Property & Finance</option>
+                            <option value="Service Des">Service Desk</option>
+                            <option value="Service Device Managemen">Service Device Management</option>
+                            <option value="Service Request">Service Request</option>
+                            <option value="Service Site - Albany">Service Site - Albany</option>
+                            <option value="Service Site - Albert">Service Site - Albert</option>
+                            <option value="Service Site CBD - AUL">Service Site CBD - AUL</option>
+                            <option value="Service Site CBD - Other">Service Site CBD - Other</option>
+                            <option value="Service Site - East">Service Site - East</option>
+                            <option value="Service Site Panuku - Takapun">Service Site Panuku - Takapuna</option>
+                            <option value="Service Site Henderso">Service Site Henderson</option>
+                            <option value="Service Site Support">Service Site Support</option>
+                            <option value="Service Site TAU">Service Site TAU</option>
+                            <option value="Ops Core Software Integration">Ops Core Software Integration</option>
+
+
+                        </select>
+
+                        <div class="form-group">
+                            <label for="type">State: </label>
+                            <select class="form-control" name="state" id="state" required>
+                                <option value="New">New</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="On Hold">On Hold</option>
+                                <option value="Resolved">Resolved</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary">Close</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        
+
+        <div class="flex justify-center mt-4 sm:mt-8">
+            <div class="text-center text-sm text-gray-500">
+                <i data-feather="phone"></i> Service Desk: 093-55-55-55
+            </div>
+
+            <div class="text-center text-sm text-gray-500 ml-4">
+                Copyright &copy; AucklandCouncil 2024 | <a href="#">LogIn</a> | <a href="#">Register</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="flex items-center justify-center min-h-screen py-4 sm:py-0">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <img src="{% static 'img/aklclogo.png' %}" alt="" width="220px">
+            <h1>Welcome to <strong>Dockinn</strong></h1>
+            <h3>Demo - If Service Now is Down!!!!</h3>
+        </div>
+        <p></p>
+        
+
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <form action="{% url 'generate_csv' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Generate CSV</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="flex justify-center mt-4 sm:mt-8">
+            <div class="text-center text-sm text-gray-500">
+                <i data-feather="phone"></i> Service Desk: 093-55-55-55
+            </div>
+
+            <div class="text-center text-sm text-gray-500 ml-4">
+                Copyright &copy; AucklandCouncil 2022 | <a href="#">LogIn</a> | <a href="#">Register</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
+{% endblock %}
