@@ -1,3 +1,4 @@
 id,name,email,description,impact,urgency,worknotes,assignment_group,state,date
-14,John Wick,john@wick.com,Test                        ,1 - 4 Users,Impeding normal work,Test                        ,Business Systems Saas Practice,New,2024-01-25 02:44:03.937393+00:00
-15,Chris,anchetc@aklc.govt.nz,Test2                        ,1 - 4 Users,Impeding normal work,                        ,Business Systems Saas Practice,New,2024-01-25 02:44:36.490868+00:00
+30,Chris Anchetc,anchetc@aklc.govt.nz,Laptop not charging                        ,1 - 4 Users,Impeding normal work,                        ,Business Systems Saas Practice,New,2024-01-25 19:27:48.775723+00:00
+31,Thomas Choi,choit@aklc.govt.nz,Need to install Adobe Pro                        ,1 - 4 Users,Impeding normal work,Advised user to Raise an Awhina request                        ,Service Site Panuku - Takapun,In Progress,2024-01-25 19:28:35.206728+00:00
+32,Lebron JAmes,james@aklc.govt.nz,Create a report for all user in External OU                        ,1 - 4 Users,Impeding normal work,Creating a script to generate report!                        ,Ops Automation,New,2024-01-25 19:29:49.671948+00:00
