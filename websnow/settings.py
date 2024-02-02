@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+import pyodbc
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,6 +33,8 @@ ALLOWED_HOSTS = ['localhost','10.210.88.176']
 # Application definition
 
 INSTALLED_APPS = [
+    'mssql',
+    'sql_server.pyodbc',
     'generatereport.apps.GeneratereportConfig',
     'incidentdown.apps.IncidentdownConfig',
     'django.contrib.admin',
@@ -76,24 +79,25 @@ WSGI_APPLICATION = 'websnow.wsgi.application'
 # Database
 #https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
+DATABASES1 = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-DATABASES2 = {
+DATABASES = {
     'default': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'OO_TEST',
+        # 'ENGINE': 'sql_server.pyodbc',
+        'ENGINE': 'mssql',
+        'NAME': 'OO_FileShare_Dev',
         'USER': 'oouser',
         'PASSWORD': '00u$3rt3st',
         'HOST': 'OperationsOrchestration_T.sqldb.aklc.govt.nz',
         'PORT':'17338',
         'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',  # Use the appropriate driver name
-        },
+            'driver': 'ODBC Driver 17 for SQL Server',
+        }
     },
 }
 DATABASE_CONNECTION_POOLING = False

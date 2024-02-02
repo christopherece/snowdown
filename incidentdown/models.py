@@ -27,20 +27,20 @@ class IncidentDown(models.Model):
     #     ('Cancelled','Cancelled'),
     # )
 
-
     name = models.CharField(max_length=200, blank=True, null=True)
-    email = models.EmailField(max_length=200, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
+    email = models.EmailField(max_length=200, blank=True, null=True, db_column='emailAddress')
+    description = models.TextField(blank=True, null=True, db_column='description')
     impact = models.CharField(max_length=200, default='1 - 4 Users')
     urgency = models.CharField(max_length=200, default='Impeding normal work')
     worknotes = models.TextField(blank=True, null=True)
     assignment_group = models.CharField(max_length=200,blank=True, null=True)
     state = models.CharField(max_length=200, default='New')
     date = models.DateTimeField(auto_now_add=True)
+    process = models.BooleanField(default=False)
 
     class Meta:
+        db_table = 'SNDownForm'
         ordering = ('date', )
-
 
     def __str__(self):
         return self.name

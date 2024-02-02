@@ -4,8 +4,8 @@ from .models import IncidentDown
 
 class IncidentDownAdmin(admin.ModelAdmin):
         list_display = (
-        'date',
         'name',
         'description',
+        'date',
     )
 admin.site.register(IncidentDown, IncidentDownAdmin)
