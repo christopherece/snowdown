@@ -30,14 +30,14 @@
         </div>
         <div class="row"> 
             <div class="col-md-6 mx-auto">
-                <form name="incidentSnowDown" id="incidentForm" action="{% url 'submitincident' %}" method="POST">
+                <form name="incidentSnowDown" id="incidentForm" action="{% url 'incidentToPush' %}" method="POST">
                     {% csrf_token %}
                     
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Name: </label>
-                        <input type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp"
-                            placeholder="Enter Name" required>
+                        <label for="exampleInputEmail1">Username: </label>
+                        <input type="text" name="caller_id" class="form-control" id="caller_id" aria-describedby="caller_idHelp"
+                            placeholder="Enter Username" required>
                     </div>
 
                     <div class="form-group">
@@ -53,22 +53,27 @@
                         </textarea>
                     </div>
                     <div class="form-group">
+                        <label for="comments">Comments</label>
+                        <textarea class="form-control" name="comments" id="comments" placeholder="Comments">
+                        </textarea>
+                    </div>
+                    <div class="form-group">
                         <label for="type">Impact: </label>
                         <select class="form-control" name="impact" id="type" required>
-                            <option value="1 - 4 Users">1 - 4 Users</option>
-                            <option value="Multiple Users (5+)">Multiple Users (5+)</option>
-                            <option value="Entire Department / Site">Entire Department / Site</option>
-                            <option value="Entire Organization">Entire Organization</option>
+                            <option value="4">1 - 4 Users</option>
+                            <option value="3">Multiple Users (5+)</option>
+                            <option value="2">Entire Department / Site</option>
+                            <option value="1">Entire Organization</option>
                             <!-- Add more options as needed -->
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="type">Urgency: </label>
                         <select class="form-control" name="urgency" id="urgency" required>
-                            <option value="Impeding normal work">Impeding normal work</option>
-                            <option value="Preventing non-urgent work">Preventing non-urgent work</option>
-                            <option value="Preventing urgent work">Preventing urgent work</option>
-                            <option value="Blocking critical business">Blocking critical business</option>
+                            <option value="4">Impeding normal work</option>
+                            <option value="3">Preventing non-urgent work</option>
+                            <option value="2">Preventing urgent work</option>
+                            <option value="1">Blocking critical business</option>
                             <!-- Add more options as needed -->
                         </select>
                     </div>
@@ -137,11 +142,11 @@
                         <div class="form-group">
                             <label for="type">State: </label>
                             <select class="form-control" name="state" id="state" required>
-                                <option value="New">New</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="On Hold">On Hold</option>
-                                <option value="Resolved">Resolved</option>
-                                <option value="Cancelled">Cancelled</option>
+                                <option value="1">New</option>
+                                <option value="2">In Progress</option>
+                                <option value="3">On Hold</option>
+                                <option value="6">Resolved</option>
+                                <option value="8">Cancelled</option>
                             </select>
                         </div>
                     </div>

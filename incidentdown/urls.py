@@ -5,6 +5,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('submitincident', views.submitincident, name='submitincident'),
+    path('submitincident', views.incidentToPush, name='incidentToPush'),
 
 ]

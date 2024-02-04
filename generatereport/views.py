@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from incidentdown.models import IncidentDown
+from incidentdown.models import IncidentDown, SnowIncident
 from django.http import HttpResponse
 import csv
 from datetime import datetime, timedelta
@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 
 # Create your views here.
 def index(request):
-    incidents = IncidentDown.objects.all()
+    incidents = SnowIncident.objects.all()
     context = {
         'incidents': incidents
         }
@@ -24,7 +24,7 @@ def generate_csv(request):
     current_date = datetime.now().strftime('%Y%m%d')
     
     # Query all records from YourModel
-    queryset = IncidentDown.objects.filter(date__range=[start, end])
+    queryset = SnowIncident.objects.filter(date__range=[start, end])
 
     # Specify the file path
     csv_file_path = 'websnow.csv'
@@ -34,7 +34,7 @@ def generate_csv(request):
         csv_writer = csv.writer(csv_file)
 
         # Write the header
-        header = [field.name for field in IncidentDown._meta.fields]
+        header = [field.name for field in SnowIncident._meta.fields]
         csv_writer.writerow(header)
 
         # Write the data
